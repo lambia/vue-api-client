@@ -1,12 +1,12 @@
 <script>
-import AppComponent from "./components/AppComponent.vue"
+import AppEventList from "./components/AppEventList.vue"
 
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
 
 export default {
 	components: {
-		AppComponent
+		AppEventList
 	},
 	data() {
 		return {
@@ -40,12 +40,7 @@ export default {
 
 <template>
 	<main>
-		<AppComponent />
-
-		<button class="btn btn-primary">
-			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />
-			<span>Primary button</span>
-		</button>
+		<AppEventList />
 	</main>
 </template>
 
