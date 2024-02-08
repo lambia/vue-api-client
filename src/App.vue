@@ -1,12 +1,12 @@
 <script>
-import AppEventList from "./components/AppEventList.vue"
 
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
+import TheHeader from "./components/TheHeader.vue"
 
 export default {
 	components: {
-		AppEventList
+		TheHeader
 	},
 	data() {
 		return {
@@ -39,8 +39,10 @@ export default {
 </script>
 
 <template>
-	<main>
-		<AppEventList />
+	<TheHeader />
+
+	<main class="py-3">
+		<router-view></router-view>
 	</main>
 </template>
 
@@ -54,7 +56,4 @@ export default {
 // @use './styles/partials/variables' as *;
 
 // ...qui eventuale SCSS di App.vue
-main {
-	padding: 1rem;
-}
 </style>
