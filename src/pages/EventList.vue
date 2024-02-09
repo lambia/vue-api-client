@@ -20,7 +20,7 @@ export default {
     <div class="container">
         <div class="row">
             <h1 class="mb-3">Eventi</h1>
-            <EventCard v-for="evento in store.eventList" :item="store.eventList[0]" />
+            <EventCard v-for="evento in store.eventList" :item="evento" />
         </div>
     </div>
 </template>

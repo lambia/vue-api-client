@@ -42,7 +42,7 @@ export default {
 	<TheHeader />
 
 	<main class="py-3">
-		<router-view></router-view>
+		<RouterView />
 	</main>
 </template>
 
