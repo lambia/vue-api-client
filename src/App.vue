@@ -17,6 +17,9 @@ export default {
 		this.getEventList();
 	},
 	methods: {
+		// goToAbout() {
+		// 	this.$router.push({ name: 'about' })
+		// },
 		getEventList() {
 
 			let url = this.store.apiUrl + this.store.apiEventEndpoint;
@@ -42,6 +45,7 @@ export default {
 	<TheHeader />
 
 	<main class="py-3">
+		<!-- <a class="btn btn-primary" @click="goToAbout">DEBUG ROUTE PUSH</a> -->
 		<RouterView />
 	</main>
 </template>

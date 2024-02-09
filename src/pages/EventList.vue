@@ -20,6 +20,7 @@ export default {
     <div class="container">
         <div class="row">
             <h1 class="mb-3">Eventi</h1>
+            <p v-if="!store.eventList || !store.eventList.length">Non sono presenti eventi</p>
             <EventCard v-for="evento in store.eventList" :item="evento" />
         </div>
     </div>

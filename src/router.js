@@ -23,10 +23,19 @@ const router = createRouter({
             name: 'events',
             component: EventList
         },
+        // I dati saranno disponibili nel componente come: $route.params.id
+        // {
+        //     path: '/eventi/:id',
+        //     name: 'event-detail',
+        //     component: EventDetail
+        // },
+        // I dati saranno disponibili come: id
+        // Necessita di una props["id"] nel componente
         {
             path: '/eventi/:id',
             name: 'event-detail',
-            component: EventDetail
+            component: EventDetail,
+            props: true
         }
     ]
 });
