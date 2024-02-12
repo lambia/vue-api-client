@@ -8,7 +8,8 @@ export default {
     data() {
         return {
             store,
-            evento: null
+            evento: null,
+            error: false
         }
     },
     mounted() {
@@ -36,13 +37,16 @@ export default {
                 if (risultato.status === 200 && risultato.data.success) {
                     console.log(risultato.data.payload);
                     this.evento = risultato.data.payload;
-                } else {
+                } else { //se il server risponde, ma con esito negativo
                     //ToDo: distinguere il motivo dell'else.
                     //es. controllare statusCode, presenza e veridicità di data.success
                     console.error("Ops... qualcosa è andato storto");
+                    this.error = true;
+                    // this.$router.push({ name: "events" });
                 }
-            }).catch(errore => {
+            }).catch(errore => { //nel caso si spacchi del tutto la chiamata
                 console.error(errore);
+                this.$router.push({ name: "events" }); //redireziona alla lista eventi
             });
         }
     }
@@ -53,18 +57,21 @@ export default {
     <div class="container">
         <div class="row">
             <div class="col-md-12 gy-4">
-                <div v-if="!evento">Caricamento dati in corso</div>
-                <div class="card h-100" v-else>
-                    <div class="card-header">{{ evento?.date }}</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ evento?.name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            {{ evento?.user ? evento?.user.name : "Utente sconosciuto" }}
-                        </h6>
-                        <p class="card-text">Restano <b>{{ evento?.available_tickets }}</b> biglietti disponibili.
-                        </p>
+                <div v-if="error">Si è verificato un errore</div>
+                <template v-else>
+                    <div v-if="!evento">Caricamento dati in corso</div>
+                    <div class="card h-100" v-else>
+                        <div class="card-header">{{ evento?.date }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ evento?.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                {{ evento?.user ? evento?.user.name : "Utente sconosciuto" }}
+                            </h6>
+                            <p class="card-text">Restano <b>{{ evento?.available_tickets }}</b> biglietti disponibili.
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </template>
             </div>
         </div>
     </div>
